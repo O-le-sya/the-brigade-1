@@ -1,0 +1,63 @@
+ Program pro;
+{$APPTYPE CONSOLE}
+Uses Windows;
+ const
+ Nmax=20;
+ var n,i,j,k:integer;
+      g:double;
+     A:array[1..Nmax] of double;
+ fin, fout: TextFile;
+
+begin
+
+
+AssignFile(fout,'D:\fout.txt');
+AssignFile(fin,'D:\fin.txt');
+
+Reset(fin);
+Rewrite(fout);
+
+readln(fin, n);
+
+for i:=1 to n do
+    readln(fin,A[i]);
+writeln(fout,'Элементы массива: ');
+       for i:=1 to n do
+    write(fout,' ', A[i]:5:2);
+writeln(fout,' ');
+readln(fin, k);
+
+
+
+writeln(fout, 'Номер k-ого элемента:');
+                 writeln(fout,' ',k);
+for i:=1 to n-1 do begin
+         for j:=1 to n-i do begin
+            if a[j]<a[J+1] then begin
+              g:=a[j];
+              a[j]:=a[j+1];
+              a[j+1]:=g;
+           end;
+      end;
+  end;
+
+writeln(fout,'Отсортированные элементы массива: ');
+       for i:=1 to n do
+    write(fout,' ', A[i]:5:2);
+
+             writeln(fout,' ');
+             if (k<=0) or (k>n) then
+begin
+  writeln(fout,'k не удовлетворяет условиям');
+end
+             else begin
+writeln(fout,'k-ый наибольший элемент одномерного массива: ');
+                 writeln(fout,' ', A[k]:5:2);
+                 end;
+
+
+CloseFile(fin);
+CloseFile(fout);
+ write('Нажмите Enter'); readln;
+
+end.     
